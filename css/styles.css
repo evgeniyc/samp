@@ -1,0 +1,47 @@
+body {
+	background: #e0c2c0;
+}
+#navbar-main {
+	background: #391328;
+}
+#navbar-main-img {
+	height: 40px;
+	margin: 5px 0;
+	border-radius: 3px;
+	box-shadow: 0 0 3px white;
+}
+.item a {
+	text-decoration: none;
+}
+.showcase {
+	background: #dbb0a0;
+	margin: 2px;
+	padding: 5px;
+	border: 1px solid black;
+	border-radius: 4px;
+	box-shadow: 0 0 3px black;
+}
+.cats-title {
+	color: #391328;
+	text-align: center;
+}
+.products-title {
+	text-align: center;
+}
+.products-descr {
+	border: 1px dotted black;
+	padding: 3px;
+	margin-top: 3px;
+}
+.products-price {
+	color: red;
+	text-align: center;
+	font-weight: bold;
+	font-size: 12pt;
+	text-shadow: 0 0 1px white;
+}
+
+
+.footer {
+	background: #eab586;
+}
