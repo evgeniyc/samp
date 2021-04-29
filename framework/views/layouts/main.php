@@ -30,13 +30,14 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
+		'brandImage' => '@web/images/sunny.jpg',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
 			'id' => 'navbar-main',
         ],
     ]);
-	echo Html::img('@web/images/pict1.png', ['alt' => 'Наш логотип', 'id' => 'navbar-main-img']);
+	//echo Html::img('@web/images/pict1.png', ['alt' => 'Наш логотип', 'id' => 'navbar-main-img']);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
@@ -74,7 +75,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; Samp <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right"><?= 'Yii2 CMS used' ?></p>
     </div>
 </footer>
 

@@ -10,6 +10,15 @@ body {
 	border-radius: 3px;
 	box-shadow: 0 0 3px white;
 }
+.brand-img {
+	height: 40px;
+	margin: 5px 0;
+	border-radius: 3px;
+	box-shadow: 0 0 3px white;
+}
+.navbar-toggle {
+	background: grey;
+}
 .item a {
 	text-decoration: none;
 }
@@ -32,6 +41,9 @@ body {
 	border: 1px dotted black;
 	padding: 3px;
 	margin-top: 3px;
+	height: 47px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .products-price {
 	color: red;

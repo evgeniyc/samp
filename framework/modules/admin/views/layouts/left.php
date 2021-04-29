@@ -8,7 +8,7 @@
                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>Some User</p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -36,17 +36,17 @@
                         'icon' => 'cubes',
                         'url' => '#',
                         'items' => [
-							['label' => 'Обзор', 'icon' => 'clipboard', 'url' => ['cats/index'],],
-                            ['label' => 'Создать', 'icon' => 'copy', 'url' => ['cats/create'],],
+							['label' => 'Обзор', 'icon' => 'eye', 'url' => ['cats/index'],],
+                            ['label' => 'Создать', 'icon' => 'plus-square', 'url' => ['cats/create'],],
                         ],
                     ],
 					[
                         'label' => 'Продукты',
-                        'icon' => 'cubes',
+                        'icon' => 'gift',
                         'url' => '#',
                         'items' => [
-							['label' => 'Обзор', 'icon' => 'clipboard', 'url' => ['products/index'],],
-                            ['label' => 'Создать', 'icon' => 'copy', 'url' => ['products/create'],],
+							['label' => 'Обзор', 'icon' => 'eye', 'url' => ['products/index'],],
+                            ['label' => 'Создать', 'icon' => 'plus-square', 'url' => ['products/create'],],
                         ],
                     ],
                      
