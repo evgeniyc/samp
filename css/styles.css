@@ -34,6 +34,25 @@ body {
 	color: #391328;
 	text-align: center;
 }
+#product-price {
+	color: red;
+	font-weight: bold;
+	font-size: 12pt;
+	padding: 10px 0;
+}
+#prod-img {
+	float: left;
+}
+#prod-descr {
+	min-width: 125px;
+	padding-left: 10px;
+}
+#product-nav {
+	text-align: center;
+	font-weight: bold;
+	font-size: 14pt;
+	padding-top: 15px;
+}
 .products-title {
 	text-align: center;
 }
