@@ -20,7 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= ListView::widget([
         'dataProvider' => $dataProvider,
-		'layout' => '{items}',
+		'summary' => '<div class = "summary"> Показано <b>{count}</b> из <b>{totalCount}</b></div>',
+		//'layout' => '{items}',
         'options' => ['class' => 'list-view row row-no-gutters'],
 		'itemOptions' => [
 			'class' => 'item col-xs-6 col-sm-4 col-md-3 col-lg-2', 

@@ -48,13 +48,22 @@ class Products extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Заголовок',
-            'descr' => 'Описание',
+            'descr' => 'Полное описание',
 			'imageFile' => 'Изображение',
             'img' => 'Изображение',
             'price' => 'Цена',
             'sdescr' => 'Краткое описание',
             'cat' => 'Категория',
+			'category' => 'Категория',
         ];
+    }
+	
+	 /**
+     * @return \yii\db\ActiveQuery
+    */ 
+    public function getCategory()
+    {
+        return $this->hasOne(Cats::className(), ['id' => 'cat']);
     }
 	
 	public function beforeSave($insert)
@@ -88,8 +97,5 @@ class Products extends \yii\db\ActiveRecord
 		return true;
 	}
 	
-	public function getCategory()
-    {
-        return $this->hasOne(Cats::className(), ['id' => 'cat']);
-    }
+	
 }

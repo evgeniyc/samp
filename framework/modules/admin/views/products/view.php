@@ -31,7 +31,10 @@ $this->title = $model->title;
             'img',
             'price',
             'sdescr:ntext',
-            'cat',
+			[	
+				'attribute' => 'cat',
+				'value' => $model->category->name,
+			]
         ],
     ]) ?>
 

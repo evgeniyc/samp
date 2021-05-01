@@ -32,17 +32,29 @@ AppAsset::register($this);
         'brandLabel' => Yii::$app->name,
 		'brandImage' => '@web/images/sunny.jpg',
         'brandUrl' => Yii::$app->homeUrl,
+		'headerContent' => 
+		' <form class="navbar-form form-inline navbar-left">
+			<div class="form-group">
+			  <input type="text" class="form-control" placeholder="Поиск по сайту">
+			</div>
+			<button type="submit" class="btn btn-search">
+				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+			</button>
+		  </form>
+		  <div id="nav-contacts">
+			<span class="glyphicon glyphicon-phone" aria-hidden="true"></span> (067)322-23-32(Киевстар)<br>
+			<span class="glyphicon glyphicon-phone" aria-hidden="true"></span> (050)322-23-32(Vodafone)
+		  </div>',
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
 			'id' => 'navbar-main',
         ],
     ]);
-	//echo Html::img('@web/images/pict1.png', ['alt' => 'Наш логотип', 'id' => 'navbar-main-img']);
-    echo Nav::widget([
+	echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Главная', 'url' => ['/site/index']],
-			['label' => 'Каталог', 'url' => ['/cats/index']],
+        'items' => [ 
+            ['label' => 'Главная', 'url' => ['/cats/index']],
+			//['label' => 'Каталог', 'url' => ['/cats/index']],
             ['label' => 'О нас', 'url' => ['/site/about']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (

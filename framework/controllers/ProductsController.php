@@ -20,8 +20,9 @@ class ProductsController extends Controller
      */
     public function actionIndex($cat=null)
     {
-        $model = Products::find()->where(['cat' => $cat]);
-        return $this->render('index', ['model' => $model]);
+        $dataProvider = new ActiveDataProvider(
+			['query' => Products::find()->where(['cat' => $cat])]);
+        return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
     /**

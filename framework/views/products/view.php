@@ -28,7 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div id="product-descr" class="col-sm-6">
 			<?= $model->descr ?>
 			<div id="product-nav">
-				Navigation
+				<?= html::a('Купить',['cats/index'],['class'=>'btn btn-success', 'role'=>'button'])?>
+				<?= html::a('Назад',Yii::$app->request->referrer,['class'=>'btn btn-primary', 'role'=>'button'])?>
 			</div>
 		</div>
 		

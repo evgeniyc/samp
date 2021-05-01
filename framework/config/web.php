@@ -9,6 +9,7 @@ $config = [
     'bootstrap' => ['log'],
 	'name' => 'Samp',
 	'language' => 'ru',
+	'defaultRoute' => 'cats/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
