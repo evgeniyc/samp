@@ -3,6 +3,7 @@ body {
 }
 #navbar-main {
 	background: #391328;
+	margin: 0;
 }
 #navbar-main-img {
 	height: 40px;
@@ -21,8 +22,8 @@ body {
 	background: #EAB586;
 }
 #nav-contacts {
-	display: inline;
-	vertical-align: middle;
+	float: left;
+	margin: 4px;
 	color: red;
 }
 .active a {
@@ -30,6 +31,15 @@ body {
 }
 .navbar-toggle {
 	background: grey;
+}
+#main-part {
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	box-shadow: 0 0 3px black;
+	background: #C8AFAD;
+}
+.breadcrumb {
+	background: #ffe6e4;
 }
 .item a {
 	text-decoration: none;
@@ -49,8 +59,10 @@ body {
 #product-price {
 	color: red;
 	font-weight: bold;
-	font-size: 12pt;
+	font-size: 14pt;
 	padding: 10px 0;
+	font-style: italic;
+	text-shadow: 0 0 1px white;
 }
 #prod-img {
 	float: left;

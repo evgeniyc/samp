@@ -49,6 +49,24 @@
                             ['label' => 'Создать', 'icon' => 'plus-square', 'url' => ['products/create'],],
                         ],
                     ],
+					[
+                        'label' => 'Пользователи',
+                        'icon' => 'user',
+                        'url' => '#',
+                        'items' => [
+							['label' => 'Обзор', 'icon' => 'eye', 'url' => ['user/index'],],
+                            ['label' => 'Создать', 'icon' => 'plus-square', 'url' => ['user/create'],],
+                        ],
+                    ],
+					[
+                        'label' => 'Заказы',
+                        'icon' => 'inbox',
+                        'url' => '#',
+                        'items' => [
+							['label' => 'Обзор', 'icon' => 'eye', 'url' => ['orders/index'],],
+                            ['label' => 'Создать', 'icon' => 'plus-square', 'url' => ['orders/create'],],
+                        ],
+                    ],
                      
                 ],
             ]

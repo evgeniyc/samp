@@ -12,6 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div id="product-view">
+<?php if (Yii::$app->session->hasFlash('orderCreated')): ?>
+        <div class="alert alert-success">
+            <?= Yii::$app->session->getFlash('orderCreated') ?>
+        </div>
+<?php endif; ?>
 
 	<div id="title-price" class="row">
 		<div id="product-title" class="col-xs-8">
@@ -26,9 +31,27 @@ $this->params['breadcrumbs'][] = $this->title;
 			<?= Html::img('@web/images/products/'.$model->img,['alt'=> $model->title,'id'=>'prod-img', 'class'=>'img-responsive']) ?>
 		</div>
 		<div id="product-descr" class="col-sm-6">
-			<?= $model->descr ?>
+			<?= $model->descr ?><hr>
+			<?= DetailView::widget([
+				'model' => $model,
+				'attributes' => [
+				[
+					'attribute' => 'Характеристики:',
+					'value' => '',
+				],
+					'id',
+					'title',
+					'img',
+					'price',
+					'sdescr:ntext',
+					[	
+						'attribute' => 'cat',
+						'value' => $model->category->name,
+					]
+				],
+			]) ?>
 			<div id="product-nav">
-				<?= html::a('Купить',['cats/index'],['class'=>'btn btn-success', 'role'=>'button'])?>
+				<?= html::a('В корзину',['basket/index','id'=>$model->id, 'user'=>Yii::$app->user->id],['class'=>'btn btn-success', 'role'=>'button'])?>
 				<?= html::a('Назад',Yii::$app->request->referrer,['class'=>'btn btn-primary', 'role'=>'button'])?>
 			</div>
 		</div>
