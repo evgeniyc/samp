@@ -32,6 +32,12 @@ body {
 .navbar-toggle {
 	background: grey;
 }
+.navbar-form {
+	padding-bottom: 8px;
+	padding-top: 8px;
+	margin-bottom: 0;
+	margin-top: 0;
+}
 #main-part {
 	border-left: 1px solid black;
 	border-right: 1px solid black;
