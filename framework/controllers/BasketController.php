@@ -14,8 +14,12 @@ class BasketController extends Controller
 		$session = Yii::$app->session;
 		$session->open();
 		if($id && $user) {
-			$session['order.id'] = $id;
-			$session['order.user'] = $user;
+			if(Yii::$app->session->has('order'))
+				$session['order'][] = $id;
+			else {
+				$session['order'] = new \ArrayObject;
+				$session['order'][] = $id;
+			}
 			$session->setFlash('orderCreated', 'Вы успешно добавили заказ!');
 		}
 		else {
@@ -24,6 +28,17 @@ class BasketController extends Controller
 		$session->close();	
 			
 		return $this->redirect(['products/view','id'=>$id]);
+    }
+	
+	 /**
+     * Displays a single Products model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionView()
+    {
+        return $this->render('view');
     }
 
 }

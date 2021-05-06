@@ -11,6 +11,9 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
+$basket = null;
+if (Yii::$app->session->has('order')) 
+	$basket = count(Yii::$app->session['order']); 
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -67,11 +70,14 @@ AppAsset::register($this);
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
-                . '</li>'
+                . '</li><li>'
+				. Html::a('<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+						<span style="color:red">'.$basket.'</span>',['basket/view'])
+				. '</li>'
             )
         ],
     ]);
-    NavBar::end();
+	NavBar::end();
     ?>
 
 <div id="main-part" class="container">
