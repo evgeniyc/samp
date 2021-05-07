@@ -43,10 +43,10 @@ class Orders extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user' => 'User',
-            'status' => 'Status',
-            'date' => 'Date',
-            'amount' => 'Amount',
+            'user' => 'Пользователь',
+            'status' => 'Статус заказа',
+            'date' => 'Дата создания',
+            'amount' => 'Сумма',
         ];
     }
 }

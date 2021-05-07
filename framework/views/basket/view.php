@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use app\models\Products;
+use yii\grid\GridView;
+
+
 //use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -35,7 +38,14 @@ $product = new Products();
 			}
 		?>
 	</div>
-	<div id="product-nav">
-		
+	<div>
+		<?php if(isset($provider))
+			echo GridView::widget(['dataProvider' => $provider]); 
+		?>
 	</div>
+	
 </div>
+
+
+
+
