@@ -22,16 +22,16 @@ $product = new Products();
 	<div id="basket-content">
 		<?php if(Yii::$app->session->has('order')){
 				$sum = 0;
-				echo '<ol>';
+				//echo '<ol>';
 				foreach(Yii::$app->session['order'] as $key => $value){
 					$product = Products::findOne($value);
-					echo '<li>'.$product->title.' '.$product->price.' грн.</li>';
+					//echo '<li>'.$product->title.' '.$product->price.' грн.</li>';
 					$sum += $product->price;
 				}
-				echo '</ol>';
+				//echo '</ol>';
 				echo 'Общая сумма заказа: '.$sum.' грн.<br>';
 				echo html::a('Оформить заказ',['order/create'],['class'=>'btn btn-success', 'role'=>'button']);
-				Yii::$app->session->remove('order');
+				//Yii::$app->session->remove('order');
 			} else {
 				echo 'Ваша корзина пуста :(<br>';
 				echo html::a('Назад',Yii::$app->request->referrer,['class'=>'btn btn-primary', 'role'=>'button']);
@@ -40,7 +40,20 @@ $product = new Products();
 	</div>
 	<div>
 		<?php if(isset($provider))
-			echo GridView::widget(['dataProvider' => $provider]); 
+			echo GridView::widget([
+				'dataProvider' => $provider,
+				'columns' => [
+					['class' => 'yii\grid\SerialColumn'],
+					'title',
+					'sdescr',
+					[
+						'attribute' =>'price',
+						'footer' => $provider->query->sum('price'),
+					],
+					['class' => 'yii\grid\ActionColumn'],
+					
+				],
+			]);
 		?>
 	</div>
 	
