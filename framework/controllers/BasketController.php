@@ -10,17 +10,19 @@ use app\models\Products;
 
 class BasketController extends Controller
 {
-    public function actionIndex($id=0,$user=0)
+    public function actionIndex($id=0,$quant=0)
     {
         
 		$session = Yii::$app->session;
 		$session->open();
-		if($id && $user) {
+		if(Yii::$app->user->isGuest)
+			$session->setFlash('orderCreated', 'Для добавления заказа войдите или зарегистрируйтесь!');
+		elseif($id && $quant) {
 			if(Yii::$app->session->has('order'))
-				$session['order'][] = $id;
+				$session['order'][$id] = $quant;
 			else {
 				$session['order'] = new \ArrayObject;
-				$session['order'][] = $id;
+				$session['order'][$id] = $quant;
 			}
 			$session->setFlash('orderCreated', 'Вы успешно добавили заказ!');
 		}
@@ -42,8 +44,9 @@ class BasketController extends Controller
     {
         if(Yii::$app->session->has('order')) {
 			$orders = Yii::$app->session['order'];
-			foreach ($orders as $key => $value) {
-				$ids[] = $value;
+			foreach ($orders as $key => $quant) {
+				$ids[] = $key;
+				$quants[$key] = $quant;
 			}
 			$provider = new ActiveDataProvider([
 				'query' => Products::find()->where(['id'=>$ids]),
@@ -51,7 +54,7 @@ class BasketController extends Controller
 					'pageSize' => 20,
 				],
 			]);
-			return $this->render('view',['provider'=>$provider]);
+			return $this->render('view',['provider'=>$provider, 'quants' => $quants]);
 		}
 				
 		return $this->render('view');

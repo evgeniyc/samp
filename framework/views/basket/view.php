@@ -24,8 +24,8 @@ $product = new Products();
 				$sum = 0;
 				//echo '<ol>';
 				foreach(Yii::$app->session['order'] as $key => $value){
-					$product = Products::findOne($value);
-					//echo '<li>'.$product->title.' '.$product->price.' грн.</li>';
+					$product = Products::findOne($key);
+					echo '<li>'.$product->title.' '.$product->price.' грн.</li>';
 					$sum += $product->price;
 				}
 				//echo '</ol>';
@@ -52,12 +52,13 @@ $product = new Products();
 					],
 					[
 						'attribute' =>'price',
-						'footer' => $provider->query->sum('price'),
+						'footer' => $provider->query->sum('price').' грн.',
 					],
 					['class' => 'yii\grid\ActionColumn'],
 					
 				],
 			]);
+			print_r($quants);
 		?>
 	</div>
 	

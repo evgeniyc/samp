@@ -10,6 +10,19 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Товары', 'url' => ['index', 'cat'=>$model->cat]];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+//$numValue = new \yii\web\JsExpression(
+$this->registerJs(
+		'$( "#basket-quant" ).change(function() {
+			  var fvalue = $("#add-order").attr("href");
+			  var avalue = $( "#basket-quant" ).val();
+			  var lastInd = fvalue.lastIndexOf("=");
+			  ++lastInd;
+			  fvalue = fvalue.slice(0,lastInd);
+			  fvalue += avalue;
+			  $("#add-order").attr("href",fvalue);
+			});'
+		);
+
 ?>
 <div id="product-view">
 <?php if (Yii::$app->session->hasFlash('orderCreated')): ?>
@@ -51,7 +64,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				],
 			]) ?>
 			<div id="product-nav">
-				<?= html::a('В корзину',['basket/index','id'=>$model->id, 'user'=>Yii::$app->user->id],['class'=>'btn btn-success', 'role'=>'button'])?>
+				<?= html::input ('number','basket-quant','1',['id'=>'basket-quant','min'=>0,'size'=>'3']) ?>
+				<?= html::a('В корзину',['basket/index','id'=>$model->id,'quant'=>1],['id'=>'add-order','class'=>'btn btn-success', 'role'=>'button'])?>
 				<?= html::a('Назад',Yii::$app->request->referrer,['class'=>'btn btn-primary', 'role'=>'button'])?>
 			</div>
 		</div>
