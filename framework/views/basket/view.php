@@ -42,10 +42,14 @@ $product = new Products();
 		<?php if(isset($provider))
 			echo GridView::widget([
 				'dataProvider' => $provider,
+				'showFooter' => true,
 				'columns' => [
 					['class' => 'yii\grid\SerialColumn'],
 					'title',
-					'sdescr',
+					[
+						'attribute' =>'sdescr',
+						'footer' => 'Итого: ',
+					],
 					[
 						'attribute' =>'price',
 						'footer' => $provider->query->sum('price'),
