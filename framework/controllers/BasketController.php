@@ -27,7 +27,7 @@ class BasketController extends Controller
 			$session->setFlash('orderCreated', 'Вы успешно добавили заказ!');
 		}
 		else {
-			$session->setFlash('orderCreated', 'Для добавления заказа войдите или зарегистрируйтесь!');
+			$session->setFlash('orderCreated', 'Ошибка добавления заказа!');
 		}
 		$session->close();	
 			
@@ -81,5 +81,12 @@ class BasketController extends Controller
 			
 		return $this->redirect(['products/view','id'=>$id]);
     }
+	
+	public function actionDelete ($id) 
+	{
+		if(isset(Yii::$app->session['order'][$id]))
+			unset(Yii::$app->session['order'][$id]);
+		return $this->redirect(['basket/view']);
+	}
 
 }

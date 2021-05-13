@@ -110,7 +110,17 @@ body {
 	padding-right: 15px;
 	float: left;
 }
-
+#basket-table {
+	width: 100%;
+}
+#basket-table td, #basket-table th {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px 15px;
+}
+#basket-table tr:nth-child(even) {
+	background: #f9f9f9;
+}
 
 .footer {
 	background: #eab586;
