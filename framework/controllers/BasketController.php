@@ -82,10 +82,23 @@ class BasketController extends Controller
 		return $this->redirect(['products/view','id'=>$id]);
     }
 	
+	public function actionUpdate($id=0,$quant=0)
+	{
+		if($id && $quant) {
+			Yii::$app->session['order'][$id]=$quant;
+			Yii::$app->session->setFlash('orderCreated', 'Элемент заказа успешно обновлен!');
+		} else
+			Yii::$app->session->setFlash('orderCreated', 'Ошибка обновления заказа!');
+		return $this->redirect(['basket/view']);
+	}
+	
 	public function actionDelete ($id) 
 	{
-		if(isset(Yii::$app->session['order'][$id]))
+		if(isset(Yii::$app->session['order'][$id])) {
+			Yii::$app->session->setFlash('orderCreated', 'Элемент заказа удален :(');
 			unset(Yii::$app->session['order'][$id]);
+		}
+			
 		return $this->redirect(['basket/view']);
 	}
 
