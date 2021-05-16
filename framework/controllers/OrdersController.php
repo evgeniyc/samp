@@ -74,6 +74,21 @@ class OrdersController extends Controller
             'model' => $model,
         ]);
     }
+	
+	public function actionCreates()
+    {
+        $model = new Orders();
+		if(Yii::$app->session->has('order')){
+			$model->user = Yii::$app->user->id;
+			$model->save();
+		    return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+			return $this->render('create', [
+				'model' => $model,
+			]);
+		}
+       
+    }
 
     /**
      * Updates an existing Orders model.

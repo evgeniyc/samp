@@ -42,22 +42,7 @@ class BasketController extends Controller
      */
     public function actionView()
     {
-        if(Yii::$app->session->has('order')) {
-			$orders = Yii::$app->session['order'];
-			foreach ($orders as $key => $quant) {
-				$ids[] = $key;
-				$quants[$key] = $quant;
-			}
-			$provider = new ActiveDataProvider([
-				'query' => Products::find()->where(['id'=>$ids]),
-				'pagination' => [
-					'pageSize' => 20,
-				],
-			]);
-			return $this->render('view',['provider'=>$provider, 'quants' => $quants]);
-		}
-				
-		return $this->render('view');
+        return $this->render('view');
     }
 	
 	public function actionCreate($id=0)

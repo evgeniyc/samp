@@ -29,7 +29,7 @@ class Orders extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user', 'amount'], 'required'],
+            [['user'], 'required'],
             [['user', 'amount'], 'integer'],
             [['status'], 'string'],
             [['date'], 'safe'],
