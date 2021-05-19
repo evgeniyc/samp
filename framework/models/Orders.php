@@ -49,4 +49,9 @@ class Orders extends \yii\db\ActiveRecord
             'amount' => 'Сумма',
         ];
     }
+	
+	public function getList()
+    {
+        return $this->hasMany(Listorder::className(), ['order_id' => 'id']);
+    }
 }

@@ -58,7 +58,7 @@ $this->registerJs(
 					$num++;
 				}
 				echo '<tr><td colspan=3></td><td>Итого:</td><td>'.$sum.' грн.</td></table><br>';
-				echo html::a('Оформить заказ',['orders/creates'],['class'=>'btn btn-success', 'role'=>'button']);
+				echo html::a('Оформить заказ',['orders/creates','sum'=>$sum],['class'=>'btn btn-success', 'role'=>'button']);
 				//Yii::$app->session->remove('order');
 			} else {
 				echo 'Ваша корзина пуста :(<br>';

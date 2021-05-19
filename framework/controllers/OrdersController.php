@@ -75,17 +75,17 @@ class OrdersController extends Controller
         ]);
     }
 	
-	public function actionCreates()
+	public function actionCreates($sum=0)
     {
         $model = new Orders();
 		if(Yii::$app->session->has('order')){
 			$model->user = Yii::$app->user->id;
+			$model->amount = $sum;
 			$model->save();
-		    return $this->redirect(['view', 'id' => $model->id]);
+			return $this->redirect(['listorder/creates', 'id' => $model->id]);
         } else {
-			return $this->render('create', [
-				'model' => $model,
-			]);
+			Yii::$app->session->setFlash('orderCreated','Ошибка создания заказа :(');
+			return $this->refresh();
 		}
        
     }

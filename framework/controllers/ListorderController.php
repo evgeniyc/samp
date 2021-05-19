@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Listorder;
+use app\models\Orders;
+use app\models\Products;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -73,6 +75,28 @@ class ListorderController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+    }
+	
+	public function actionCreates($id=0)
+    {
+       	if(Yii::$app->session->has('order')) {
+			foreach(Yii::$app->session['order'] as $key => $value){
+				$product = Products::findOne($key);
+				$model = new Listorder();
+				$model->order_id = $id;
+				$model->prod_id = $product->id;
+				$model->price = $product->price;
+				$model->quant = $value;
+				if($model->validate())
+					$model->save();
+			}
+			Yii::$app->session->destroy('order');
+			return $this->render('success');
+		}
+		throw new NotFoundHttpException('The requested page does not exist.');
+		
+        
+        
     }
 
     /**
